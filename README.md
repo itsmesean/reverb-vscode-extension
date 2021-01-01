@@ -5,7 +5,9 @@ The reVerb extension is a RESTful api client for Visual Studio Code that offers 
 Warning! reVerb is in pre-alpha. Please understand things may not always work as intended.
 You can always completely wipe all saved route data in settings > ERASE to start fresh.
 
-![reVerb extension overview](media/OpenWebview.gif)
-![reVerb extension overview](media/QuickQuery.gif)
+![reVerb extension overview](https://raw.githubusercontent.com/reVerb-LLC/reverb-vscode-extension/staging/media/OpenWebview.gif)
+![reVerb extension overview](https://raw.githubusercontent.com/reVerb-LLC/reverb-vscode-extension/staging/media/QuickQuery.gif)
 
 Full documentation is on the way!
+
+media\OpenWebview.gif
