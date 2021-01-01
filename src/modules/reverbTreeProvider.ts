@@ -74,7 +74,6 @@ export default class ReverbTreeProvider
             const name = `${route.pathname}`;
             const uri = href;
             const { method } = route;
-            console.log(route);
             const { range } = route;
             output.push(
                 new RouteItem(

@@ -71,7 +71,6 @@ export function resetTreeview() {
 
     ext.treeView.tree.onDidChangeSelection(async (e: any) => {
         if (e.selection[0].contextValue === 'routeItem') {
-            console.log(e.selection[0]);
             commands.executeCommand(
                 'extension.openFileInEditor',
                 e.selection[0].filePath,

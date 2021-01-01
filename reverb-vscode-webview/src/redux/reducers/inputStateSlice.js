@@ -207,7 +207,12 @@ export const inputStateSlice = createSlice({
       const newState = resetInputs(state);
       newState.inputs.urlState = object;
 
-      vscode.postMessage({ payload: { command: 'openFileInEditor', data: object.filePath } });
+      vscode.postMessage({
+        payload: {
+          command: 'openFileInEditor',
+          data: { uri: object.filePath, range: object.range },
+        },
+      });
       return newState;
     },
     setMethodState: (state, action) => {

@@ -280,6 +280,7 @@ class ExpressParser {
                     methods: [route.method],
                     presets,
                     params,
+                    range: [route.startLine, route.endLine],
                 };
             } else if (!urls[href].methods.includes(route.method)) {
                 urls[href].methods.push(route.method);

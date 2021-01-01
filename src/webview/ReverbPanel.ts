@@ -135,7 +135,8 @@ export default class ReverbPanel {
                     case 'openFileInEditor':
                         await commands.executeCommand(
                             'extension.openFileInEditor',
-                            msg.payload.data,
+                            msg.payload.data.uri,
+                            msg.payload.data.range,
                         );
                         break;
                     default:
