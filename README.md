@@ -9,5 +9,3 @@ You can always completely wipe all saved route data in settings > ERASE to start
 ![reVerb extension overview](https://raw.githubusercontent.com/reVerb-LLC/reverb-vscode-extension/staging/media/QuickQuery.gif)
 
 Full documentation is on the way!
-
-media\OpenWebview.gif
