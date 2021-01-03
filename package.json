@@ -177,11 +177,6 @@
             }
         ]
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "yarn package && yarn e2e"
-        }
-    },
     "lint-staged": {
         "*.{ts}": [
             "eslint -c .eslintrc"
