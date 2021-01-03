@@ -43,13 +43,18 @@
     ],
     "main": "out/extension.js",
     "scripts": {
-        "vscode:prepublish": "yarn build",
+        "vscode:prepublish": "yarn compile && cd ./reverb-vscode-webview && yarn run dev",
         "compile": "cross-env NODE_ENV=development ts-node-dev --files -P ./build/tsconfig.json ./build",
         "test-compile": "tsc -p ./test/tsconfig.json",
         "build": "cross-env NODE_ENV=production ts-node --files -P ./build/tsconfig.json ./build",
         "build-analyze": "yarn build --analyze",
         "lint": "eslint -c .eslintrc.js --ext .ts ./{build,src,test}/**/*.ts",
         "test": "yarn run test-compile && node ./out/test/runTests.js",
+        "package": "mkdir dist && vsce package --out dist/test.vsix",
+        "code-server-up": "docker-compose up -d && docker exec vscodeExtension code-server --install-extension /source/dist/test.vsix",
+        "code-server-down": "docker-compose down",
+        "e2e": "yarn code-server-up && cypress run && yarn code-server-down",
+        "e2e:debug": "yarn code-server-up && cypress open && yarn code-server-down",
         "postinstall": "cd ./reverb-vscode-webview && yarn install"
     },
     "activationEvents": [
@@ -174,7 +179,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "yarn package && yarn e2e"
         }
     },
     "lint-staged": {
@@ -186,9 +191,11 @@
         ]
     },
     "dependencies": {
+        "@testing-library/cypress": "^7.0.3",
         "@types/uuid": "^8.3.0",
         "@typescript-eslint/typescript-estree": "^4.9.0",
         "axios": "^0.21.0",
+        "cypress": "4.0.2",
         "estree-walker": "^2.0.1",
         "find-process": "^1.4.4",
         "httpsnippet": "^1.24.0",

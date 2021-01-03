@@ -1,6 +1,7 @@
 node_modules
 build
 out
+e2e/
 test-fixture/
 .vscode-test/
 reverb-vscode-webview
