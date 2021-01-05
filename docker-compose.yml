@@ -1,10 +1,11 @@
 version: '2'
 services:
-  test:
-    image: codercom/code-server:latest
-    command: "/source --auth none --disable-telemetry"
-    container_name: vscodeExtension
-    ports:
-      - "8080:8080"
-    volumes:
-      - .:/source
+    test:
+        image: codercom/code-server:latest
+        command: '/express-test --auth none --disable-telemetry'
+        container_name: vscodeExtension
+        ports:
+            - '8080:8080'
+        volumes:
+            - ../test-server-express:/express-test
+            - .:/source
