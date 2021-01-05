@@ -1,4 +1,4 @@
-export const getWebviewIndex = (iFrameParentLocator, iFrameNestedLocator) => {
+export const getWebview = (iFrameParentLocator, iFrameNestedLocator) => {
     return findIndex(iFrameParentLocator, iFrameNestedLocator);
 };
 
