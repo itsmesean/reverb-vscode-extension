@@ -36,7 +36,7 @@ export function activate(context: ExtensionContext) {
     if (window.registerWebviewPanelSerializer) {
         window.registerWebviewPanelSerializer(ReverbPanel.viewType, {
             async deserializeWebviewPanel(webviewPanel: WebviewPanel) {
-                ReverbPanel.revive(webviewPanel, ext.context.extensionUri);
+                ReverbPanel.revive(webviewPanel);
             },
         });
     }

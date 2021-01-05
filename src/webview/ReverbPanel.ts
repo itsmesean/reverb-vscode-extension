@@ -21,11 +21,9 @@ export default class ReverbPanel {
 
     private readonly _panel: WebviewPanel;
 
-    private readonly _extensionUri: Uri;
-
     private _disposables: Disposable[] = [];
 
-    public static createOrShow(extensionUri: Uri) {
+    public static createOrShow() {
         // If we already have a panel, show it.
         if (ReverbPanel.currentPanel) {
             ReverbPanel.currentPanel._panel.reveal(ViewColumn.Active);
@@ -39,16 +37,15 @@ export default class ReverbPanel {
             localResourceRoots: [Uri.file(path.join(ext.context.extensionPath, 'out'))],
         });
 
-        ReverbPanel.currentPanel = new ReverbPanel(panel, extensionUri);
+        ReverbPanel.currentPanel = new ReverbPanel(panel);
     }
 
-    public static revive(panel: WebviewPanel, extensionUri: Uri) {
-        ReverbPanel.currentPanel = new ReverbPanel(panel, extensionUri);
+    public static revive(panel: WebviewPanel) {
+        ReverbPanel.currentPanel = new ReverbPanel(panel);
     }
 
-    private constructor(panel: WebviewPanel, extensionUri: Uri) {
+    private constructor(panel: WebviewPanel) {
         this._panel = panel;
-        this._extensionUri = extensionUri;
 
         this._panel.onDidDispose(() => this.dispose(), undefined, this._disposables);
 

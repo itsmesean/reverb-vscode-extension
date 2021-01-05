@@ -17,7 +17,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 
-let masterDataObject;
+let masterDataObject: MasterDataObject | undefined;
 
 // Create a Reverb Tree Provider class that extends vscode Tree Data Provider class
 export default class ReverbTreeProvider
@@ -35,7 +35,7 @@ export default class ReverbTreeProvider
     }
 
     // Returns the children for the given element or root (if no element is passed).
-    getChildren(element?: RouteItem | PathItem | RootItem) {
+    getChildren(element?: any) {
         // Throw an error if no workspace is open
 
         if (!this.workspaceRoot) {
@@ -65,8 +65,9 @@ export default class ReverbTreeProvider
         ]);
     }
 
-    private getRoutes({ filePath, serverPath, href }): Array<RouteItem> | undefined {
+    private getRoutes(routeItem: PathItem): Array<RouteItem> | undefined {
         if (masterDataObject === undefined) return;
+        const { filePath, serverPath, href } = routeItem;
         const output: RouteItem[] | undefined = [];
 
         for (const item in masterDataObject.domains[serverPath].paths[filePath]) {
@@ -94,7 +95,7 @@ export default class ReverbTreeProvider
         if (masterDataObject === undefined) return;
         const output: PathItem[] | undefined = [];
         const dirName = vscode.workspace.workspaceFolders![0].name;
-        const cache = {};
+        const cache: Record<any, any> = {};
 
         for (const domain in masterDataObject.domains) {
             for (const itemPath in masterDataObject.domains[domain].urls) {

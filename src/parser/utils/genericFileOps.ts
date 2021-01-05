@@ -32,7 +32,7 @@ export const readFile = (file: File): string => {
  * @return {File[]} An array containing all of the generated File objects
  */
 const createFileObjects = (fileList: string[]) => {
-    const output: { path: string; fileName: string; contents: string }[] = [];
+    const output: any = [];
     fileList.forEach((path: string) => {
         // Split the extract the file name from the merged path
         const PATH_SPLIT = path.match(FILENAME_AND_PATH);

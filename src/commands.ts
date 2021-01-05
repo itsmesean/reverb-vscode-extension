@@ -154,7 +154,7 @@ export namespace ExtCmds {
      */
     export async function OpenWebview() {
         await utils.clearEditorPanels();
-        ReverbPanel.createOrShow(ext.context.extensionUri);
+        ReverbPanel.createOrShow();
         await commands.executeCommand('workbench.action.closeEditorsToTheLeft');
     }
 
